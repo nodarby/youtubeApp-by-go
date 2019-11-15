@@ -25,6 +25,9 @@ func FetchMostPopularVideos() echo.HandlerFunc{
 					Chart("mostPopular").
 					MaxResults(3)
 
+
+
+
 			res, err := call.Do()
 			if err != nil{
 				logrus.Fatalf("Error calling Youtube API: %v", err)

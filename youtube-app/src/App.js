@@ -46,6 +46,13 @@ class App extends React.Component{
 
   render() {
       if(this.state.loading){
+          const cards = this.state.data.map((item, index) => {
+              return (
+                  <div key={index} className="card">
+                      <VideoCard image={item.snippet.thumbnails.medium.url} title={item.snippet.title} sentence={item.snippet.description}/>
+                  </div>
+              );
+          });
           return(
                   <div className="App">
                       <Helmet>
@@ -57,15 +64,7 @@ class App extends React.Component{
                               <p>ホーム</p>
                           </div>
                           <div style={{flex:1}}>
-                              <div className="card">
-                                  <VideoCard  image={this.state.data[0].snippet.thumbnails.medium.url} title={this.state.data[0].snippet.title} sentence={this.state.data[0].snippet.description}/>
-                              </div>
-                              <div className="card">
-                                  <VideoCard  image={this.state.data[1].snippet.thumbnails.medium.url} title={this.state.data[1].snippet.title} sentence={this.state.data[1].snippet.description}/>
-                              </div>
-                              <div className="card">
-                                  <VideoCard  image={this.state.data[2].snippet.thumbnails.medium.url} title={this.state.data[2].snippet.title} sentence={this.state.data[2].snippet.description}/>
-                              </div>
+                              {cards}
                           </div>
                       </div>
                   </div>
